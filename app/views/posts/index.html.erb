@@ -1,0 +1,20 @@
+<div class="page-header">
+<h3>Blog Yazılar</h3>
+</div>
+
+<%= link_to "Yeni Yazı", new_post_path, class: "btn btn-success" %>
+<% @posts.each do |posts| %>
+<div class="posts">
+<strong><%= posts.title %> </strong>
+<p> <%= posts.body %>
+</p>
+<div class="meta">
+<%= link_to time_ago_in_words(posts.created_at) + " önce", posts %> |
+  <%= link_to "Oku", posts %> |
+  <span class="admin">
+    <%= link_to "Düzenle", edit_post_path(posts) %> |
+    <%= link_to "Sil", posts, method: :delete, data: { confirm: "Blog Yazısı silinecek. Emin misiniz? "} %>
+  </span>
+</div>
+</div>
+<% end %>
